@@ -1,0 +1,116 @@
+/*
+Theme Name: OceanWP Child
+Theme URI: https://oceanwp.org/
+Description: OceanWP WordPress theme example child theme.
+Author: Nick
+Author URI: https://oceanwp.org/
+Template: oceanwp
+Version: 3.0
+*/
+
+/* Parent stylesheet should be loaded from functions.php not using @import */
+
+@import url('https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap&subset=latin-ext');
+
+H1, H2, H3, H4 {
+	font-family: 'Bebas Neue', cursive !important;
+	letter-spacing:2px;
+	
+}
+h2 {
+    font-size: 30PX;
+    color: #201747;
+	line-height:34px;
+}
+.elementor-text-editor.elementor-clearfix a {
+    color: 
+    white;
+}
+.elementor-text-editor.elementor-clearfix a:hover {
+    color: 
+    #8c8c8c;
+}
+.forminator-title {
+    font-size: 16px;
+    font-family: 'roboto' !important;
+}
+#forminator-field-upload-5{
+border-radius: 5px;
+background: rgb(252,254,255);
+background: linear-gradient(180deg, rgba(252,254,255,1) 0%, rgba(185,185,185,1) 100%);
+box-shadow: 1px 1px 3px 0px #00000069;
+color:#626262;
+}
+#forminator-field-upload-2 {
+	border-radius: 5px;
+background: rgb(252,254,255);
+background: linear-gradient(180deg, rgba(252,254,255,1) 0%, rgba(185,185,185,1) 100%);
+box-shadow: 1px 1px 3px 0px #00000069;
+color:#626262;
+}
+#forminator-field-upload-6 {
+	border-radius: 5px;
+background: rgb(252,254,255);
+background: linear-gradient(180deg, rgba(252,254,255,1) 0%, rgba(185,185,185,1) 100%);
+box-shadow: 1px 1px 3px 0px #00000069;
+color:#626262;
+}
+#forminator-field-upload-4 {
+	border-radius: 5px;
+background: rgb(252,254,255);
+background: linear-gradient(180deg, rgba(252,254,255,1) 0%, rgba(185,185,185,1) 100%);
+box-shadow: 1px 1px 3px 0px #00000069;
+color:#626262;
+}
+#forminator-field-upload-3 {
+	border-radius: 5px;
+background: rgb(252,254,255);
+background: linear-gradient(180deg, rgba(252,254,255,1) 0%, rgba(185,185,185,1) 100%);
+box-shadow: 1px 1px 3px 0px #00000069;
+color:#626262;
+}
+#forminator-field-upload-1  {
+	border-radius: 5px;
+background: rgb(252,254,255);
+background: linear-gradient(180deg, rgba(252,254,255,1) 0%, rgba(185,185,185,1) 100%);
+box-shadow: 1px 1px 3px 0px #00000069;
+color:#626262;
+}
+#forminator-field-upload-7  {
+	border-radius: 5px;
+background: rgb(252,254,255);
+background: linear-gradient(180deg, rgba(252,254,255,1) 0%, rgba(185,185,185,1) 100%);
+box-shadow: 1px 1px 3px 0px #00000069;
+color:#626262;
+}
+#forminator-field-upload-8  {
+	border-radius: 5px;
+background: rgb(252,254,255);
+background: linear-gradient(180deg, rgba(252,254,255,1) 0%, rgba(185,185,185,1) 100%);
+box-shadow: 1px 1px 3px 0px #00000069;
+color:#626262;
+}
+#forminator-field-upload-9  {
+	border-radius: 5px;
+background: rgb(252,254,255);
+background: linear-gradient(180deg, rgba(252,254,255,1) 0%, rgba(185,185,185,1) 100%);
+box-shadow: 1px 1px 3px 0px #00000069;
+color:#626262;
+}
+.home .eael-grid-post-holder {
+    border:none;
+}
+.home .eael-entry-thumbnail img {
+    transition:all 0.5s linear;
+}
+.home .eael-entry-thumbnail:hover img {
+    transform: scale(1.05);
+}
+#site-header {
+    border-bottom-color: #004f8f;
+    border-bottom-width: 3px;
+    border-bottom-style: solid;
+}
+#footer-bottom {
+    display: none;
+}
