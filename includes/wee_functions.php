@@ -268,14 +268,14 @@ final class wee_Elementor_my_Extencion {
 		// Include Widget files
         //require_once(  '../widgets/test-widget.php' );
 	   require_once  WEE_DIR_PATH . '/widgets/test-header-widget.php';
-	   require_once  WEE_DIR_PATH . '/widgets/my-wee-posts-section.php';
-	   require_once  WEE_DIR_PATH . '/widgets/my-wee-product-buscador.php';
+	   //require_once  WEE_DIR_PATH . '/widgets/my-wee-posts-section.php';
+	   //require_once  WEE_DIR_PATH . '/widgets/my-wee-product-buscador.php';
 	   require_once  WEE_DIR_PATH . '/widgets/my-wee-grid-posts.php';
 
 
 		// Register widget
-		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\wee_Elementor_buscador_header() );
-		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\wee_Elementor_Section_posts() );
+		//\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\wee_Elementor_buscador_header() );
+		//\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\wee_Elementor_Section_posts() );
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\wee_Elementor_Test_header() );
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\wee_Post_Grid() );
 

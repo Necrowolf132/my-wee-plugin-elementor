@@ -5,7 +5,7 @@ use Elementor\Controls_Manager;
 
 class wee_Elementor_buscador_header extends Widget_Base {
 
-	
+	//private $reload = false;
  
 	/**
 	 * Retrieve the widget name.
@@ -17,7 +17,7 @@ class wee_Elementor_buscador_header extends Widget_Base {
 	 * @return string Widget name.
 	 */
 	public function get_name() {
-		$this->$reload = false;
+		//$this->$reload = false;
 		return 'wee_Elementor_buscador_header';
 	}
 	/**
@@ -463,10 +463,10 @@ $products = wc_get_products(array(
 
 		?>
 
-		<div id="buscador-wee-<?echo $this->get_id();?>" data-id="<?echo $this->get_id();?>" class="container-fluid buscador-class-general buscador-class-<?echo $this->get_id();?>">
+		<div id="buscador-wee-<?phpecho $this->get_id();?>" data-id="<?php echo $this->get_id();?>" class="container-fluid buscador-class-general buscador-class-<?php echo $this->get_id();?>">
 			{{mensaje}}
-				<div class="row d-flex justify-content-between align-items-center  <? echo $settings['columna_fila']=='Columna' ?  'flex-column' : 'flex-row';?>">
-				<?  $tolal_terms = [];
+				<div class="row d-flex justify-content-between align-items-center  <?php  echo $settings['columna_fila']=='Columna' ?  'flex-column' : 'flex-row';?>">
+				<?php   $tolal_terms = [];
 					if(!empty($settings['select_atributes'])) {
             			foreach($settings['select_atributes'] as $attributo_actual) {
 							$attributes_name = wc_get_attribute($attributo_actual);
@@ -479,22 +479,22 @@ $products = wc_get_products(array(
 				?>
 					<input-atributo v-bind:input_mensaje="mensaje"></input-atributo>
 					<div class="my-column">
-						<label>Filtrar por <? echo $attributes_name; ?></label>
-						<select name=" product_<? echo $attributes_name; ?>"  v-model="mensaje" id="select_<? echo $attributes_name; ?>" class="buscador_select2 dropdown_product_wooSelect select2-hidden-accessible"  tabindex="-1" aria-hidden="true">
-							<option value="" selected="selected">Seleccione <? echo $attributes_name; ?></option>
-						<? if(!empty($attributes_terms)) {
+						<label>Filtrar por <?php  echo $attributes_name; ?></label>
+						<select name=" product_<?php  echo $attributes_name; ?>"  v-model="mensaje" id="select_<?php  echo $attributes_name; ?>" class="buscador_select2 dropdown_product_wooSelect select2-hidden-accessible"  tabindex="-1" aria-hidden="true">
+							<option value="" selected="selected">Seleccione <?php  echo $attributes_name; ?></option>
+						<?php  if(!empty($attributes_terms)) {
             				foreach($attributes_terms as $attributo_terms_aux) {
 						?>
-							<option class="level-0" value="<? echo $attributo_terms_aux->slug; ?>"><? echo $attributo_terms_aux->name; ?></option>
-						<? }
+							<option class="level-0" value="<?php  echo $attributo_terms_aux->slug; ?>"><?php  echo $attributo_terms_aux->name; ?></option>
+						<?php  }
 						} ?>
 						</select>
 					</div>
-					<? }
+					<?php  }
 					} ?>
 				</div>
 		</div>
-	<?
+	<?php 
 		$this->_add_script();
 	} 
 //
@@ -537,7 +537,7 @@ $products = wc_get_products(array(
 													});
 					}   
 			</script>
-		<?
+		<?php 
 		}
 	}
 	/**

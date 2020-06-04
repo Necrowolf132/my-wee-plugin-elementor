@@ -417,45 +417,45 @@ class wee_Elementor_Section_posts extends Widget_Base {
 		<?php if(empty($settings['logo_link']['url'])){ 
 			$url_image_aux=$settings['imagen_header']['url'];
 		?>
-			<img class='wee_logo d-inline-block align-top' width='712' height='442' src='<? echo $url_image_aux; ?>' sizes='(max-width: 712px) 100vw, 712px'>
-			<? if(!empty($settings['title_x'])){ ?>
-				<span class='wee_header-title'> <? echo $settings['title_x']; ?> </span>
-			<?	} ?>
-		<?} else {
+			<img class='wee_logo d-inline-block align-top' width='712' height='442' src='<?php echo $url_image_aux; ?>' sizes='(max-width: 712px) 100vw, 712px'>
+			<?php if(!empty($settings['title_x'])){ ?>
+				<span class='wee_header-title'> <?php echo $settings['title_x']; ?> </span>
+			<?php	} ?>
+		<?php} else {
 			$url_image_aux=$settings['imagen_header']['url'];
 			$logo_link_aux=$settings['logo_link']['url'];
 		?>
-			<a class='navbar-brand' <? echo $href_atr; ?>  href='<? echo $logo_link_aux; ?>'>
-				<img class='wee_logo d-inline-block align-top' width='712' height='442' src='<? echo $url_image_aux; ?>' sizes='(max-width: 712px) 100vw, 712px'>
-				<?	if(!empty($settings['title_x'])){ ?>
-						<span class='wee_header-title'><? echo $settings[title_x]; ?></span>
-				<?	} ?>
+			<a class='navbar-brand' <?php echo $href_atr; ?>  href='<?php echo $logo_link_aux; ?>'>
+				<img class='wee_logo d-inline-block align-top' width='712' height='442' src='<?php echo $url_image_aux; ?>' sizes='(max-width: 712px) 100vw, 712px'>
+				<?php	if(!empty($settings['title_x'])){ ?>
+						<span class='wee_header-title'><?php echo $settings[title_x]; ?></span>
+				<?php	} ?>
        		</a>
-		<?	} ?>
+		<?php	} ?>
 
 
 		
-		<button class='navbar-toggler'  type='button' data-toggle='collapse' data-target='#navbarNav-<?echo $this->get_id();?>' aria-controls='navbarNav' aria-expanded='false' aria-label='Toggle navigation'>
-		<?
+		<button class='navbar-toggler'  type='button' data-toggle='collapse' data-target='#navbarNav-<?phpecho $this->get_id();?>' aria-controls='navbarNav' aria-expanded='false' aria-label='Toggle navigation'>
+		<?php
 			\Elementor\Icons_Manager::render_icon( $settings['icon_menu'], [ 'aria-hidden' => 'true' ] );
 		/*$icon_menu_movil_aux = $settings['icon_menu']['value'];
 		$out.="<i class='$icon_menu_movil_aux'></i>";*/
 		?>
 		</button>
-        <div class='collapse navbar-collapse wee_navbar' id='navbarNav-<?echo $this->get_id();?>'>
+        <div class='collapse navbar-collapse wee_navbar' id='navbarNav-<?php echo $this->get_id();?>'>
             <ul class='navbar-nav ml-auto wee-menu-font-transform wee-menu-font wee-menu-font-color'>                  
-       <? $menu_Object = wp_get_nav_menu_items( $settings['select_menu']);   
+       <?php $menu_Object = wp_get_nav_menu_items( $settings['select_menu']);   
         if(!empty($menu_Object) && $menu_Object != false ) {
             foreach($menu_Object as $menu_actual){ ?>
                 <li class='nav-item '>
-                    <a class='nav-link text-center' data-padretogle='#navbarNav-<?echo $this->get_id();?>' href='<? echo  $menu_actual->url ?>'><? echo $menu_actual->title ?></a>
+                    <a class='nav-link text-center' data-padretogle='#navbarNav-<?php echo $this->get_id();?>' href='<?php echo  $menu_actual->url ?>'><?php echo $menu_actual->title ?></a>
                 </li>
-       <?     }
+       <?php     }
         } ?> 
     	  </ul>
 		</div>
         </nav>
-	<? } 
+	<?php } 
 	/**
 	 * Render the widget output in the editor.
 	 *
