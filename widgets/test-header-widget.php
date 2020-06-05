@@ -422,20 +422,20 @@ class wee_Elementor_Test_header extends Widget_Base {
 
 
 		
-		<button class='navbar-toggler'  type='button' data-toggle='collapse' data-target='#navbarNav-<?phpecho $this->get_id();?>' aria-controls='navbarNav' aria-expanded='false' aria-label='Toggle navigation'>
+		<button class='navbar-toggler'  type='button' data-toggle='collapse' data-target='#navbarNav-<?php echo $this->get_id();?>' aria-controls='navbarNav' aria-expanded='false' aria-label='Toggle navigation'>
 		<?php
 			\Elementor\Icons_Manager::render_icon( $settings['icon_menu'], [ 'aria-hidden' => 'true' ] );
 		/*$icon_menu_movil_aux = $settings['icon_menu']['value'];
 		$out.="<i class='$icon_menu_movil_aux'></i>";*/
 		?>
 		</button>
-        <div class='collapse navbar-collapse wee_navbar' id='navbarNav-<?phpecho $this->get_id();?>'>
+        <div class='collapse navbar-collapse wee_navbar' id='navbarNav-<?php echo $this->get_id();?>'>
             <ul class='navbar-nav ml-auto wee-menu-font-transform wee-menu-font wee-menu-font-color'>                  
        <?php $menu_Object = wp_get_nav_menu_items( $settings['select_menu']);   
         if(!empty($menu_Object) && $menu_Object != false ) {
             foreach($menu_Object as $menu_actual){ ?>
                 <li class='nav-item '>
-                    <a class='nav-link text-center' data-padretogle='#navbarNav-<?phpecho $this->get_id();?>' href='<?php echo  $menu_actual->url ?>'><?php echo $menu_actual->title ?></a>
+                    <a class='nav-link text-center' data-padretogle='#navbarNav-<?php echo $this->get_id();?>' href='<?php echo  $menu_actual->url ?>'><?php echo $menu_actual->title ?></a>
                 </li>
        <?php     }
         } ?> 

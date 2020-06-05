@@ -5,7 +5,7 @@ use Elementor\Controls_Manager;
 
 class wee_Elementor_buscador_header extends Widget_Base {
 
-	//private $reload = false;
+	private static $reload = false;
  
 	/**
 	 * Retrieve the widget name.
@@ -17,7 +17,7 @@ class wee_Elementor_buscador_header extends Widget_Base {
 	 * @return string Widget name.
 	 */
 	public function get_name() {
-		//$this->$reload = false;
+		self::$reload = false;
 		return 'wee_Elementor_buscador_header';
 	}
 	/**
@@ -94,7 +94,7 @@ class wee_Elementor_buscador_header extends Widget_Base {
         wp_enqueue_style( 'header-elementor-my-estilos');
      } );*/
         //
-        return [ 'bootstarp-js-extencion-elementor', 'vue-elementor', 'widget-buscador' ,'selectWoo'];
+	   return [ 'bootstarp-js-extencion-elementor', 'vue-elementor', 'widget-buscador' ,'selectWoo'];
     }
     public function add_style_depends($handler) {
         $this->depended_styles[] = $handler;
@@ -106,8 +106,9 @@ class wee_Elementor_buscador_header extends Widget_Base {
 
 
     protected function _control_section_inputs_content(){
-
-		$array_attributes = wc_get_attribute_taxonomies();
+		if(function_exists('wc_get_attribute_taxonomies')){
+			$array_attributes = wc_get_attribute_taxonomies();
+		}
 		$this->start_controls_section(
 			'section_inputs',
 			[
@@ -459,11 +460,11 @@ $products = wc_get_products(array(
 		var_dump($attributes_all);
 	}
 }*/
-		var_dump($products[0]->get_attributes());;
-
+		var_dump($products[0]->get_attributes());
+		
 		?>
 
-		<div id="buscador-wee-<?phpecho $this->get_id();?>" data-id="<?php echo $this->get_id();?>" class="container-fluid buscador-class-general buscador-class-<?php echo $this->get_id();?>">
+		<div id="buscador-wee-<?php echo $this->get_id();?>" data-id="<?php echo $this->get_id();?>" class="container-fluid buscador-class-general buscador-class-<?php echo $this->get_id();?>">
 			{{mensaje}}
 				<div class="row d-flex justify-content-between align-items-center  <?php  echo $settings['columna_fila']=='Columna' ?  'flex-column' : 'flex-row';?>">
 				<?php   $tolal_terms = [];
@@ -552,38 +553,8 @@ $products = wc_get_products(array(
 	protected function _content_template() {
 		//$menus_selecionado = $this->get_settings_for_display('select_menu');
 		return "";
-        ?>
         
-        <nav class='navbar navbar-expand-lg _belownavbar-light bg-light'>
-        <a class='navbar-brand' href='#'>
-            <img width='712' height='442' src='http://local-dev-selenil.loc/wp-content/uploads/2019/11/logo-Selenil.png' class='attachment-full size-full' alt=' srcset='http://local-dev-selenil.loc/wp-content/uploads/2019/11/logo-Selenil.png 712w, http://local-dev-selenil.loc/wp-content/uploads/2019/11/logo-Selenil-300x186.png 300w' sizes='(max-width: 712px) 100vw, 712px'>
-            {{{ settings.title }}}
-        </a>
-        <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarNav' aria-controls='navbarNav' aria-expanded='false' aria-label='Toggle navigation'>
-        <span class='navbar-toggler-icon'></span>
-        </button>
-        <div class='collapse navbar-collapse' id='navbarNav'>
-            <ul class='navbar-nav'>
-            <?php
-                $li = "";
-                //var_dump($GLOBALS);
-                //$menus_selecionado = $this->get_settings_for_display('select_menu');
-                $menu_Object = wp_get_nav_menu_items('Menu principal');
-                
-                if(!empty($menu_Object) && $menu_Object != false ) {
-                    foreach($menu_Object as $menu_actual){
-                        $li .= "<li class='nav-item'>
-                                     <a class='nav-link' href='$menu_actual->url'>$menu_actual->title</a>
-                                </li>";
-                    }
-                }
-                    echo $li;
-              ?>
-            </ul>
-            </div>
-            </nav>
-		<?php
-	}
+    }
 
 }
 ?>

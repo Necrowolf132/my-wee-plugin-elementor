@@ -38,7 +38,7 @@ final class wee_Elementor_my_Extencion {
 	 * @access private
 	 * @static
 	 *
-	 * @var wee_Elementor_my_ExtencionThe single instance of the class.
+	 * @var wee_Elementor_my_Extencion The single instance of the class.
 	 */
     private static $_instance = null;
 
@@ -76,10 +76,11 @@ final class wee_Elementor_my_Extencion {
 
 		add_action( 'init', [ $this, 'i18n' ] );
         add_action( 'plugins_loaded', [ $this, 'init' ] );
-        add_action( 'admin_menu', [$this, 'wee_Add_My_Admin_Link'] );
+		add_action( 'admin_menu', [$this, 'wee_Add_My_Admin_Link'] );
 
 	}
-
+	
+	
 	/**
 	 * Load Textdomain
 	 *
@@ -269,16 +270,18 @@ final class wee_Elementor_my_Extencion {
         //require_once(  '../widgets/test-widget.php' );
 	   require_once  WEE_DIR_PATH . '/widgets/test-header-widget.php';
 	   //require_once  WEE_DIR_PATH . '/widgets/my-wee-posts-section.php';
-	   //require_once  WEE_DIR_PATH . '/widgets/my-wee-product-buscador.php';
 	   require_once  WEE_DIR_PATH . '/widgets/my-wee-grid-posts.php';
 
 
 		// Register widget
-		//\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\wee_Elementor_buscador_header() );
 		//\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\wee_Elementor_Section_posts() );
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\wee_Elementor_Test_header() );
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\wee_Post_Grid() );
 
+		if(function_exists('wc_get_attribute_taxonomies')){
+			require_once  WEE_DIR_PATH . '/widgets/my-wee-product-buscador.php';
+			\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\wee_Elementor_buscador_header() );
+		}
 	}
 
 	/**
