@@ -421,7 +421,7 @@ class wee_Elementor_Section_posts extends Widget_Base {
 			<?php if(!empty($settings['title_x'])){ ?>
 				<span class='wee_header-title'> <?php echo $settings['title_x']; ?> </span>
 			<?php	} ?>
-		<?php} else {
+		<?php } else {
 			$url_image_aux=$settings['imagen_header']['url'];
 			$logo_link_aux=$settings['logo_link']['url'];
 		?>
@@ -435,7 +435,7 @@ class wee_Elementor_Section_posts extends Widget_Base {
 
 
 		
-		<button class='navbar-toggler'  type='button' data-toggle='collapse' data-target='#navbarNav-<?phpecho $this->get_id();?>' aria-controls='navbarNav' aria-expanded='false' aria-label='Toggle navigation'>
+		<button class='navbar-toggler'  type='button' data-toggle='collapse' data-target='#navbarNav-<?php echo $this->get_id(); ?>' aria-controls='navbarNav' aria-expanded='false' aria-label='Toggle navigation'>
 		<?php
 			\Elementor\Icons_Manager::render_icon( $settings['icon_menu'], [ 'aria-hidden' => 'true' ] );
 		/*$icon_menu_movil_aux = $settings['icon_menu']['value'];
