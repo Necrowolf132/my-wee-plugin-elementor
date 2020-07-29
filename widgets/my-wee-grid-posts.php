@@ -75,7 +75,18 @@ class wee_Post_Grid extends Widget_Base
 
             ]
         );
+        $this->add_control(
+            'wee_post_imagen_bg_color',
+            [
+                'label' => __('Post Background Image', 'wee_elementor-test-extension'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .eael-entry-thumbnail' => 'background-color: {{VALUE}}',
+                ],
 
+            ]
+        );
+       
         $this->add_responsive_control(
             'wee_post_grid_spacing',
             [
@@ -84,6 +95,17 @@ class wee_Post_Grid extends Widget_Base
                 'size_units' => ['px', '%', 'em'],
                 'selectors' => [
                     '{{WRAPPER}} .eael-grid-post' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+        $this->add_responsive_control(
+            'wee_post_grid_card_padding',
+            [
+                'label' => esc_html__('Padding interno cards', 'wee_elementor-test-extension'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%', 'em'],
+                'selectors' => [
+                    '{{WRAPPER}} .eael-grid-post-holder' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );

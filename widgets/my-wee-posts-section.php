@@ -435,7 +435,7 @@ class wee_Elementor_Section_posts extends Widget_Base {
 
 
 		
-		<button class='navbar-toggler'  type='button' data-toggle='collapse' data-target='#navbarNav-<?php echo $this->get_id(); ?>' aria-controls='navbarNav' aria-expanded='false' aria-label='Toggle navigation'>
+		<button class='navbar-toggler'  type='button' data-toggle='collapse' data-target='#navbarNav-<?php echo $this->get_id();?>' aria-controls='navbarNav' aria-expanded='false' aria-label='Toggle navigation'>
 		<?php
 			\Elementor\Icons_Manager::render_icon( $settings['icon_menu'], [ 'aria-hidden' => 'true' ] );
 		/*$icon_menu_movil_aux = $settings['icon_menu']['value'];

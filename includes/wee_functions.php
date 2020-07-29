@@ -148,7 +148,7 @@ final class wee_Elementor_my_Extencion {
 		wp_register_style( 'header-elementor-boostrap',  plugins_url( 'my-wee-plugin-elementor/css/bootstrap_css/bootstrap.min.css', WEE_DIR_PATH));
 		wp_register_style( 'header-elementor-my-estilos', plugins_url( 'my-wee-plugin-elementor/css/my_elementor_estilos.css', WEE_DIR_PATH ) );
 		wp_register_style( 'buscador-elementor-my-estilos', plugins_url( 'my-wee-plugin-elementor/css/buscador_elementor_estilos.css', WEE_DIR_PATH ) );
-		wp_register_style( 'my-post-grid', plugins_url( 'my-wee-plugin-elementor/css/post-grid/index.min.css', WEE_DIR_PATH ) );
+		wp_register_style( 'my-post-grid', plugins_url( 'my-wee-plugin-elementor/css/post-grid/index.css', WEE_DIR_PATH ) );
     }
     public function wee_widget_scripts() {
 

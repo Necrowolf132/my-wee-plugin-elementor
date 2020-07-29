@@ -1,4 +1,5 @@
 var PostGrid = function($scope, $) {
+    console.log("estoy aqui");
     var $gallery = $(".eael-post-appender", $scope).isotope({
         itemSelector: ".eael-grid-post",
         masonry: {

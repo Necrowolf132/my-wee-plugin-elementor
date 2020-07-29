@@ -612,7 +612,67 @@ trait Helper
         }
 
         if ('wee-post-grid' === $this->get_name() || 'wee-post-block' === $this->get_name() || 'wee-post-carousel' === $this->get_name()) {
-
+            $this->add_control(
+                'row_full',
+                [
+                    'label' => esc_html__('Tipo de content', 'wee_elementor-test-extension'),
+                    'type'      => Controls_Manager::SWITCHER,
+                    'label_on'  => __( 'Full', 'wee_elementor-test-extension' ),
+                    'label_off' => __( 'No-full', 'wee_elementor-test-extension' ),
+                    'return_value' => '-full',
+                    'prefix_class' => 'row',
+                    'default' => '',
+                ]
+            );
+            
+            $this->add_control(
+                'position_for_arti2',
+                [
+                    'label' => esc_html__('Position por articulo', 'wee_elementor-test-extension'),
+                    'type'      => Controls_Manager::SWITCHER,
+                    'label_on'  => __( 'row', 'wee_elementor-test-extension' ),
+                    'label_off' => __( 'column', 'wee_elementor-test-extension' ),
+                    'return_value' => '-row',
+                    'prefix_class' => 'content-align',
+                    'default' => '-colunm',
+                ]
+            );
+            $this->add_responsive_control(
+                'row_column_main',
+                [
+                    'label' => __( 'Tamaños de columnas', 'wee_elementor-test-extension' ),
+                    'type' => Controls_Manager::DIMENSIONS,
+                    'size_units' => [ 'px', '%'],
+                    'default' => [
+                        'left' => 20,
+                        'right' => 70,
+                        'unit' => '%',
+                    ],
+                    'allowed_dimensions' => 'horizontal',
+                    'selectors' => [
+                        '{{WRAPPER}} .eael-grid-post-holder-inner' => 'grid-template-columns: {{LEFT}}{{UNIT}} {{RIGHT}}{{UNIT}};'
+                    ],
+                    'condition' => [
+                        'position_for_arti2' => '-row',
+                    ]
+                ]
+            );
+            $this->add_responsive_control(
+                'imagen_wee_post_width',
+                [
+                    'label' => esc_html__( 'Imagen Width', 'wee_elementor-test-extension' ),
+                    'type' => Controls_Manager::SLIDER,
+                    'size_units'	=> ['px', '%', 'em'],
+                    'range' => [
+                        'px' => [ 'max' => 300 ],
+                        '%'	=> [ 'max'	=> 100 ],
+                        'em' => [ 'max'	=> 100 ]
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .eael-entry-thumbnail > a > img ' => 'width: {{SIZE}}{{UNIT}};',
+                    ],
+                ]
+            );
             $this->add_control(
                 'wee_show_meta',
                 [
