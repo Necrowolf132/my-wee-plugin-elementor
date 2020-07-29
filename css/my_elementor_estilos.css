@@ -26,6 +26,11 @@
 nav .wee_navbar ul>li>a:hover {
     color: #ff7c06;
 }*/
+.navbar-brand {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
 .header-top.relieve {
   transform: scaleX(1.01);
   box-shadow: black 0px -7px 40px !important;
@@ -38,23 +43,65 @@ nav button.navbar-toggler i {
   border: none;
   font-size: 39px;
 }
+.header-logo-display-row .navbar-brand {
+  flex-direction: row;
+}
+.header-logo-display-row span.wee_header-title {
+  display: flex;
+  align-items: center;
+}
+.navbar-light .navbar-toggler {
+  position: absolute;
+  transform: translate(0px, -10%);
+  top: 10%;
+  right: 0px;
+  margin: 0px;
+}
+.navbar-light .navbar-toggler:focus {
+  outline: none;
+}
+.navbar-light .navbar-toggler.collapsed {
+  transform: translate(0px, -53%);
+  top: 53%;
+}
+@media only screen and (max-width: 991px) {
+  ul.navbar-nav {
+    margin-bottom: 0px;
+  }
+}
+
+@media only screen and (max-width: 760px){
+  .header-logo-display-tablet-row .navbar-brand {
+    flex-direction: row;
+  }
+  .header-logo-display-tablet-row span.wee_header-title {
+    display: flex;
+    align-items: center;
+  }
+}
+
 @media only screen and (max-width: 562px) {
   .navbar {
     align-items: center;
     justify-content: flex-end;
   }
-  .navbar-light .navbar-toggler {
+  .header-logo-display-mobile-row  .navbar-brand {
+    flex-direction: row;
+  }
+  .header-logo-display-mobile-row span.wee_header-title {
+    display: flex;
+    align-items: center;
+  }
+  .navbar-toggler.collapsed {
     position: absolute;
     align-self: flex-start;
-    margin-top: 11px;
   }
-  .navbar-light .navbar-brand {
+  .navbar-brand-mobile-center .navbar-brand {
     margin-left: auto;
     margin-right: auto;
   }
-}
-@media only screen and (max-width: 991px) {
-  ul.navbar-nav {
-    margin-bottom: 25px;
+  .navbar-brand-mobile-center .navbar-brand {
+    margin-left: auto;
+    margin-right: auto;
   }
 }

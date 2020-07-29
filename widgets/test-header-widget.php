@@ -164,7 +164,62 @@ class wee_Elementor_Test_header extends Widget_Base {
 				'type' => Controls_Manager::TEXT,
 				'default' =>''
 			]
-        );
+		);
+		$this->add_responsive_control(
+			'padding_text_logo',
+		[
+			'label' => __( 'Padding texto logo', 'wee_elementor-test-extension' ),
+			'type' => Controls_Manager::DIMENSIONS,
+			'size_units' => [ 'px', '%','em'],
+			'default' => [
+				'left' => 5,
+				'right' => 5,
+				'top' => 5,
+				'bottom' => 5,
+				'unit' => '%',
+			],
+			'condition' => [
+				'title_x!' => '',
+			],
+			'selectors' => [
+				'{{WRAPPER}} span.wee_header-title' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
+			]
+		]
+		);
+		$this->add_responsive_control(
+			'row_column_logo',
+			[
+				'label' => esc_html__('Display Column/Row logo', 'wee_elementor-test-extension'),
+				'type'      => Controls_Manager::SWITCHER,
+				'label_on'  => __( 'row', 'wee_elementor-test-extension' ),
+				'label_off' => __( 'column', 'wee_elementor-test-extension' ),
+				'return_value' => '-row',
+				'devices' => [ 'desktop', 'tablet', 'mobile' ],
+				'desktop_default' => '',
+				'tablet_default' => '',
+				'mobile_default' => '',
+				'prefix_class' => 'header-logo-display%s',
+				'default' => '',
+			]
+		);
+		$this->add_responsive_control(
+			'position-logo-mobil',
+			[
+				'label' => __( 'Elegir posicion en mobil', 'elementor-hello-world' ),
+				'type' => Controls_Manager::SELECT,
+				'mobile_default' => "margin-left: auto; margin-right: auto;",
+				'devices' => [ 'tablet','mobile' ],
+				'mobile_default' => 'margin-right: auto;',
+				'tablet_default' => 'margin-right: auto;',
+				'options' => [
+					'margin-right: auto;'  => __( 'Left', 'elementor-hello-world' ),
+					'margin-left: auto; margin-right: auto;'  => __( 'Center', 'elementor-hello-world' ),
+				],
+				'selectors' => [
+					'{{WRAPPER}} .navbar-brand' => '{{VALUE}}',
+				]
+			]
+		);
         $this->end_controls_section();
 
 	}
@@ -224,6 +279,23 @@ class wee_Elementor_Test_header extends Widget_Base {
 			[
 				'name' => 'title_logo_typography',
 				'selector' => '{{WRAPPER}} span.wee_header-title',
+			]
+		);
+		$this->add_control(
+			'logo_title_color',
+			[
+				'label' => __( 'Color text logo', 'elementor-hello-world' ),
+				'type' => Controls_Manager::COLOR,
+				'scheme' => [
+					'type' => \Elementor\Scheme_Color::get_type(),
+					'value' => \Elementor\Scheme_Color::COLOR_1,
+				],
+				'selectors' => [
+					'{{WRAPPER}} span.wee_header-title' => 'color: {{VALUE}}',
+				],
+				'condition' => [
+					'title_x!' => '',
+				],
 			]
 		);
 		$this->add_control(
@@ -422,7 +494,7 @@ class wee_Elementor_Test_header extends Widget_Base {
 
 
 		
-		<button class='navbar-toggler'  type='button' data-toggle='collapse' data-target='#navbarNav-<?php echo $this->get_id();?>' aria-controls='navbarNav' aria-expanded='false' aria-label='Toggle navigation'>
+		<button class='navbar-toggler collapsed'  type='button' data-toggle='collapse' data-target='#navbarNav-<?php echo $this->get_id();?>' aria-controls='navbarNav' aria-expanded='false' aria-label='Toggle navigation'>
 		<?php
 			\Elementor\Icons_Manager::render_icon( $settings['icon_menu'], [ 'aria-hidden' => 'true' ] );
 		/*$icon_menu_movil_aux = $settings['icon_menu']['value'];
