@@ -121,6 +121,21 @@ class wee_Elementor_Test_header extends Widget_Base {
 				],
 			]
 		);
+		$this->add_control(
+			'break_point',
+			[
+				'label' => __( 'Punto de quiebre del menú', 'elementor-hello-world' ),
+				'type' => Controls_Manager::SELECT,
+				'default' => 'navbar-expand-lg',
+				'options' => [
+					'navbar-expand-sm'  => __( '<576px', 'elementor-hello-world' ),
+					'navbar-expand-md'  => __( '<768px', 'elementor-hello-world' ),
+					'navbar-expand-lg'  => __( '<992px', 'elementor-hello-world' ),
+					'navbar-expand-xl'  => __( '<1200px', 'elementor-hello-world' ),
+					
+				],
+			]
+		);
 		$this->add_responsive_control(
 			'width_logo',
 			[
@@ -190,16 +205,16 @@ class wee_Elementor_Test_header extends Widget_Base {
 			'row_column_logo',
 			[
 				'label' => esc_html__('Display Column/Row logo', 'wee_elementor-test-extension'),
-				'type'      => Controls_Manager::SWITCHER,
-				'label_on'  => __( 'row', 'wee_elementor-test-extension' ),
-				'label_off' => __( 'column', 'wee_elementor-test-extension' ),
-				'return_value' => '-row',
+				'type' => Controls_Manager::SELECT,
 				'devices' => [ 'desktop', 'tablet', 'mobile' ],
-				'desktop_default' => '',
-				'tablet_default' => '',
-				'mobile_default' => '',
+				'options' => [
+					'-row'  => __( 'Row', 'elementor-hello-world' ),
+					'-column'  => __( 'Column', 'elementor-hello-world' ),
+				],
+				'desktop_default' => '-row',
+				'tablet_default' => '-row',
+				'mobile_default' => '-row',
 				'prefix_class' => 'header-logo-display%s',
-				'default' => '',
 			]
 		);
 		$this->add_responsive_control(
@@ -472,11 +487,11 @@ class wee_Elementor_Test_header extends Widget_Base {
         //$locationsitems_menu =  wp_get_nav_menu_items( $menu_id );
 		$href_atr=$this->get_render_attribute_string( 'wee-link'); 
 		?>
-		<nav class='navbar navbar-expand-lg navbar-light'>
+		<nav class='navbar <?php echo $settings['break_point'] ?> navbar-light'>
 		<?php if(empty($settings['logo_link']['url'])){ 
 			$url_image_aux=$settings['imagen_header']['url'];
 		?>
-			<img class='wee_logo d-inline-block align-top' width='712' height='442' src='<?php echo $url_image_aux; ?>' sizes='(max-width: 712px) 100vw, 712px'>
+			<img class='wee_logo img-fluid'  src='<?php echo $url_image_aux; ?>' >
 			<?php if(!empty($settings['title_x'])){ ?>
 				<span class='wee_header-title'> <?php echo $settings['title_x']; ?> </span>
 			<?php	} ?>
