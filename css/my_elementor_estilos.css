@@ -29,7 +29,6 @@ nav .wee_navbar ul>li>a:hover {
 .navbar-brand {
   display: flex;
   flex-wrap: wrap;
-  flex-direction: column;
 }
 .header-top.relieve {
   transform: scaleX(1.01);
@@ -50,6 +49,9 @@ nav button.navbar-toggler i {
   display: flex;
   align-items: center;
 }
+.header-logo-display-column .navbar-brand {
+  flex-direction: column;
+}
 .navbar-light .navbar-toggler {
   position: absolute;
   transform: translate(0px, -10%);
@@ -64,6 +66,27 @@ nav button.navbar-toggler i {
   transform: translate(0px, -53%);
   top: 53%;
 }
+@media (max-width: 1024px) {
+  .header-logo-display-tablet-row .navbar-brand {
+    flex-direction: row;
+  }
+  .header-logo-display-tablet-column .navbar-brand {
+    flex-direction: column;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .header-logo-display-mobile-row  .navbar-brand {
+    flex-direction: row;
+  }
+  .header-logo-display-mobile-column .navbar-brand {
+    flex-direction: column;
+  }
+  .header-logo-display-mobile-row span.wee_header-title {
+    display: flex;
+    align-items: center;
+  }
+}
+
 @media only screen and (max-width: 991px) {
   ul.navbar-nav {
     margin-bottom: 0px;
@@ -71,12 +94,8 @@ nav button.navbar-toggler i {
 }
 
 @media only screen and (max-width: 760px){
-  .header-logo-display-tablet-row .navbar-brand {
-    flex-direction: row;
-  }
-  .header-logo-display-tablet-row span.wee_header-title {
-    display: flex;
-    align-items: center;
+  .navbar-brand {
+    flex-direction: column;
   }
 }
 
@@ -84,13 +103,7 @@ nav button.navbar-toggler i {
   .navbar {
     align-items: center;
     justify-content: flex-end;
-  }
-  .header-logo-display-mobile-row  .navbar-brand {
-    flex-direction: row;
-  }
-  .header-logo-display-mobile-row span.wee_header-title {
-    display: flex;
-    align-items: center;
+      
   }
   .navbar-toggler.collapsed {
     position: absolute;
