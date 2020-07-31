@@ -9,11 +9,11 @@ if (!defined('ABSPATH')) {
 trait Post_Grid
 {
     public static function __render_template($args, $settings)
-    {
+    {   
         $query = new \WP_Query($args);
       
         ob_start();
-
+        var_dump($settings);
         if($query->have_posts()) {
             while($query->have_posts()) {
                 $query->the_post();
@@ -51,8 +51,15 @@ trait Post_Grid
                                         if ($settings['wee_show_meta'] && $settings['meta_position'] == 'meta-entry-header') {
                                             echo '<div class="eael-entry-meta">
                                                 <span class="eael-posted-by">' . get_the_author_meta( 'display_name' ) . '</span>
-                                                <span class="eael-posted-on"><time datetime="' . get_the_date() . '">' . get_the_date() . '</time></span>
-                                            </div>';
+                                                <span class="wee-time eael-posted-on"><time datetime="' . get_the_date() . '">' . get_the_date() . '</time></span>';
+                                                if ($settings['wee_show_categori_meta'] == "yes" ) {
+                                                    $cats =  get_the_category();
+                                                    $cat = $cats[0];
+                                                    $wee_category = $cat->name;
+                                                    echo '<span class="eael-category-on eael-posted-on">' . $wee_category . '</span>';
+                                                }
+
+                                           echo '</div>';
                                         }
                                     echo '</header>';
 
@@ -75,8 +82,14 @@ trait Post_Grid
                                         </div>
                                         <div class="eael-entry-meta">
                                             <div class="eael-posted-by">' . get_the_author_posts_link() . '</div>
-                                            <div class="eael-posted-on"><time datetime="' . get_the_date() . '">' . get_the_date() . '</time></div>
-                                        </div>
+                                            <div class="wee-time eael-posted-on"><time datetime="' . get_the_date() . '">' . get_the_date() . '</time></div>';
+                                        if ($settings['wee_show_categori_meta'] == "yes" ) {
+                                            $cats =  get_the_category();
+                                            $cat = $cats[0];
+                                            $wee_category = $cat->name;
+                                            echo '<div class="eael-category-on eael-posted-on">' . $wee_category . '</div>';
+                                        }
+                                     echo  '</div>
                                     </div>';
                                 }
                             }

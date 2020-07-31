@@ -479,7 +479,7 @@ class wee_Post_Grid extends Widget_Base
             'wee_show_read_more_button' => $settings['wee_show_read_more_button'],
             'read_more_button_text' => $settings['read_more_button_text'],
             'read_more_button_text' => $settings['read_more_button_text'],
-            
+            'wee_show_categori_meta' => $settings['wee_show_categori_meta'],
             'wee_post_grid_columns' => $settings['wee_post_grid_columns'],
             'show_load_more' => $settings['show_load_more'],
             'show_load_more_text' => $settings['show_load_more_text'],

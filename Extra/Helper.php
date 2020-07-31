@@ -114,6 +114,18 @@ trait Helper
             ]
         );
 
+        $this->add_control(
+            'wee_buscar_destacados',
+            [
+                'label' => __('Buscar Solo destacados', 'wee_elementor-test-extension'),
+                'type'      => Controls_Manager::SWITCHER,
+                'label_on'  => __( 'yes', 'wee_elementor-test-extension' ),
+                'label_off' => __( 'no', 'wee_elementor-test-extension' ),
+                'return_value' => 'yes',
+                'default' => 'no'
+            ]
+        );
+
         foreach ($taxonomies as $taxonomy => $object) {
             if (!isset($object->object_type[0]) || !in_array($object->object_type[0], array_keys($post_types))) {
                 continue;
@@ -534,7 +546,7 @@ trait Helper
                 'type' => Controls_Manager::NUMBER,
                 'default' => '10',
                 'condition' => [
-                    'eael_show_excerpt' => 'yes',
+                    'wee_show_excerpt' => 'yes',
                 ],
             ]
         );
@@ -684,7 +696,6 @@ trait Helper
                     'default' => 'yes'
                 ]
             );
-
             $this->add_control(
                 'meta_position',
                 [
@@ -695,6 +706,20 @@ trait Helper
                         'meta-entry-header' => esc_html__('Entry Header', 'wee_elementor-test-extension'),
                         'meta-entry-footer' => esc_html__('Entry Footer', 'wee_elementor-test-extension'),
                     ],
+                    'condition' => [
+                        'wee_show_meta' => 'yes',
+                    ],
+                ]
+            );
+            $this->add_control(
+                'wee_show_categori_meta',
+                [
+                    'label' => __('Show category', 'wee_elementor-test-extension'),
+                    'type'      => Controls_Manager::SWITCHER,
+                    'label_on'  => __( 'Show', 'wee_elementor-test-extension' ),
+                    'label_off' => __( 'Hide', 'wee_elementor-test-extension' ),
+                    'return_value' => 'yes',
+                    'default' => 'yes',
                     'condition' => [
                         'wee_show_meta' => 'yes',
                     ],
@@ -1132,7 +1157,7 @@ trait Helper
     }
 
     public function wee_get_query_args($settings = [])
-    {
+    {   
         $settings = wp_parse_args($settings, [
             'post_type' => 'post',
             'posts_ids' => [],
@@ -1152,10 +1177,17 @@ trait Helper
             'offset' => $settings['offset']
         ];
 
-        if ('by_id' === $settings['post_type']) {
+        if ('by_id' === $settings['post_type'] && $settings['wee_buscar_destacados'] != "yes") {
             $args['post_type'] = 'any';
             $args['post__in'] = empty($settings['posts_ids']) ? [0] : $settings['posts_ids'];
         } else {
+            if($settings['wee_buscar_destacados'] == "yes") {
+                $stickies = get_option( 'sticky_posts' );
+                if ( $stickies ) {
+                        $args['post__in'] = $stickies;
+                        $args['ignore_sticky_posts'] = 1;
+                }
+            }
             $args['post_type'] = $settings['post_type'];
             $args['tax_query'] = [];
 
