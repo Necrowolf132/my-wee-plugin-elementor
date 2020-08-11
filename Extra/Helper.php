@@ -303,7 +303,7 @@ trait Helper
             ]
         );
 
-        if ('wee-post-grid' === $this->get_name()) {
+        if ('wee-post-grid-slider' === $this->get_name() || 'wee-post-grid' === $this->get_name()) {
             $this->add_control(
                 'wee_post_grid_columns',
                 [
@@ -595,6 +595,7 @@ trait Helper
 
         if (
             'wee-post-grid' === $this->get_name()
+            || 'wee-post-grid-slider' === $this->get_name()
             || 'wee-post-block' === $this->get_name()
             || 'wee-post-carousel' === $this->get_name()
         ) {
@@ -623,7 +624,7 @@ trait Helper
             );
         }
 
-        if ('wee-post-grid' === $this->get_name() || 'wee-post-block' === $this->get_name() || 'wee-post-carousel' === $this->get_name()) {
+        if ('wee-post-grid' === $this->get_name() || 'wee-post-grid-slider' === $this->get_name() || 'wee-post-block' === $this->get_name() || 'wee-post-carousel' === $this->get_name()) {
             $this->add_control(
                 'row_full',
                 [
@@ -662,7 +663,8 @@ trait Helper
                     ],
                     'allowed_dimensions' => 'horizontal',
                     'selectors' => [
-                        '{{WRAPPER}} .eael-grid-post-holder-inner' => 'grid-template-columns: {{LEFT}}{{UNIT}} {{RIGHT}}{{UNIT}};'
+                        '{{WRAPPER}} .eael-grid-post-holder-inner' => 'grid-template-columns: {{LEFT}}{{UNIT}} {{RIGHT}}{{UNIT}};',
+                        '{{WRAPPER}} .eael-grid-post-slider-holder-inner' => 'grid-template-columns: {{LEFT}}{{UNIT}} {{RIGHT}}{{UNIT}};'
                     ],
                     'condition' => [
                         'position_for_arti2' => '-row',
@@ -735,6 +737,7 @@ trait Helper
     {
         if (
             'wee-post-grid' === $this->get_name()
+            || 'wee-post-grid-slider' === $this->get_name()
             || 'wee-post-block' === $this->get_name()
             || 'wee-post-carousel' === $this->get_name()
             || 'wee-post-list' === $this->get_name()

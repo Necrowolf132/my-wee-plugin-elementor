@@ -6,20 +6,23 @@ if (!defined('ABSPATH')) {
     exit;
 } // Exit if accessed directly
 
-trait Post_Grid
+trait Post_Grid_Slider
 {
     public static function __render_template($args, $settings)
     {   
         $query = new \WP_Query($args);
       
         ob_start();
-
+        echo "<div class='swiper-container swiper-container-".$settings['wee_id_widget']."' data>
+                <div class='swiper-wrapper'>";
         if($query->have_posts()) {
             while($query->have_posts()) {
                 $query->the_post();
-                echo '<article class="eael-grid-post eael-post-grid-column post-id-'. get_the_id() .'">
-                    <div class="eael-grid-post-holder">
-                        <div class="eael-grid-post-holder-inner">';
+                echo '
+                <div class="swiper-slide">
+                <article class="eael-grid-post-slider eael-post-grid-column post-id-'. get_the_id() .'">
+                    <div class="eael-grid-post-slider-holder">
+                        <div class="eael-grid-post-slider-holder-inner">';
                             if (has_post_thumbnail() && $settings['wee_show_image'] == 'yes') {
                                 echo '<div class="eael-entry-media">';
                                     if ('none' !== $settings['wee_post_grid_hover_animation']) {
@@ -45,7 +48,7 @@ trait Post_Grid
                                 echo '<div class="eael-entry-wrapper">
                                     <header class="eael-entry-header">';
                                         if ($settings['wee_show_title']) {
-                                            echo '<h2 class="eael-entry-title"><a class="eael-grid-post-link" href="' . get_the_permalink() . '" title="' . get_the_title() . '">' . get_the_title() . '</a></h2>';
+                                            echo '<h2 class="eael-entry-title"><a class="eael-grid-post-slider-link" href="' . get_the_permalink() . '" title="' . get_the_title() . '">' . get_the_title() . '</a></h2>';
                                         }
 
                                         if ($settings['wee_show_meta'] && $settings['meta_position'] == 'meta-entry-header') {
@@ -65,7 +68,7 @@ trait Post_Grid
 
                                     if ($settings['wee_show_excerpt']) {
                                         echo '<div class="eael-entry-content">
-                                            <div class="eael-grid-post-excerpt">
+                                            <div class="eael-grid-post-slider-excerpt">
                                                 <p>' . wp_trim_words(strip_shortcodes(get_the_excerpt() ? get_the_excerpt() : get_the_content()), $settings['wee_excerpt_length'], $settings['expanison_indicator']) . '</p>';
                                                 if ($settings['wee_show_read_more_button']) {
                                                     echo '<a href="' . get_the_permalink() . '" class="eael-post-elements-readmore-btn">' . esc_attr($settings['read_more_button_text']) . '</a>';
@@ -95,8 +98,14 @@ trait Post_Grid
                             }
                         echo '</div>
                     </div>
-                </article>';
+                </article>
+                </div>';
             }
+        echo "
+            </div>
+            <div class='swiper-pagination'></div>
+        </div>
+        ";
         } else {
             _e('<p class="no-posts-found">No posts found!</p>', 'essential-addons-elementor');
         }

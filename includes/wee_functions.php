@@ -145,18 +145,46 @@ final class wee_Elementor_my_Extencion {
     }
     public function wee_widget_styles() {
 
+		//wee_Elementor_Test_header
+
 		wp_register_style( 'header-elementor-boostrap',  plugins_url( 'my-wee-plugin-elementor/css/bootstrap_css/bootstrap.min.css', WEE_DIR_PATH));
 		wp_register_style( 'header-elementor-my-estilos', plugins_url( 'my-wee-plugin-elementor/css/my_elementor_estilos.css', WEE_DIR_PATH ) );
+
+		//
+
 		wp_register_style( 'buscador-elementor-my-estilos', plugins_url( 'my-wee-plugin-elementor/css/buscador_elementor_estilos.css', WEE_DIR_PATH ) );
+
+		//wee_Post_Grid
+
 		wp_register_style( 'my-post-grid', plugins_url( 'my-wee-plugin-elementor/css/post-grid/index.css', WEE_DIR_PATH ) );
+
+		//wee_Post_Grid_Slider
+		wp_register_style( 'my-post-grid-slider-swiper', plugins_url( 'my-wee-plugin-elementor/css/post-grid-slider/swiper-bundle.css', WEE_DIR_PATH ) );
+		wp_register_style( 'my-post-grid-slider', plugins_url( 'my-wee-plugin-elementor/css/post-grid-slider/index.css', WEE_DIR_PATH ), ['my-post-grid-slider-swiper'] );
     }
     public function wee_widget_scripts() {
 
+		//wee_Elementor_Test_header
+
 		wp_register_script( 'bootstarp-js-extencion-elementor', plugins_url( 'my-wee-plugin-elementor/js/bootstrap_js/bootstrap.bundle.min.js', WEE_DIR_PATH ), [ 'jquery' ] );
+
+		//wee_Post_Grid
+
 		wp_register_script( 'my-js-post-grid', plugins_url( 'my-wee-plugin-elementor/js/post-grid/index.min.js', WEE_DIR_PATH ), [ 'jquery' ] );
+		wp_register_script( 'my-js-post-grid', plugins_url( 'my-wee-plugin-elementor/js/post-grid/index.min.js', WEE_DIR_PATH ), [ 'jquery' ] );
+
+		//wee_Post_Grid_Slider
+
+		wp_register_script( 'my-js-post-grid-slider-swiper', plugins_url( 'my-wee-plugin-elementor/js/post-grid-slider/swiper-bundle.js', WEE_DIR_PATH ), [ 'jquery' ] );
+		wp_register_script( 'my-js-post-grid-slider', plugins_url( 'my-wee-plugin-elementor/js/post-grid-slider/index.js', WEE_DIR_PATH ), [ 'jquery', 'my-js-post-grid-slider-swiper' ] );
+
+		//Buscador (incompleto)
+
 		wp_register_script( 'vue-elementor', plugins_url( 'my-wee-plugin-elementor/js/vue/vue.js', WEE_DIR_PATH ), [ 'bootstarp-js-extencion-elementor', 'jquery' ] );
 		wp_register_script( 'widget-buscador', plugins_url( 'my-wee-plugin-elementor/js/widget-buscador.js', WEE_DIR_PATH ),['vue-elementor','bootstarp-js-extencion-elementor'] );
 		wp_register_script( 'widget-1', plugins_url( 'my-wee-plugin-elementor/js/widget-1.js', WEE_DIR_PATH ),['vue-elementor','bootstarp-js-extencion-elementor'] );
+
+
 
 	}
     public function wee_add_my_widget_categories( $elements_manager ) {
@@ -271,12 +299,14 @@ final class wee_Elementor_my_Extencion {
 	   require_once  WEE_DIR_PATH . '/widgets/test-header-widget.php';
 	   //require_once  WEE_DIR_PATH . '/widgets/my-wee-posts-section.php';
 	   require_once  WEE_DIR_PATH . '/widgets/my-wee-grid-posts.php';
+	   require_once  WEE_DIR_PATH . '/widgets/my-wee-grid-posts-slider.php';
 
 
 		// Register widget
 		//\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\wee_Elementor_Section_posts() );
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\wee_Elementor_Test_header() );
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\wee_Post_Grid() );
+		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\wee_Post_Grid_Slider() );
 
 		if(function_exists('wc_get_attribute_taxonomies')){
 			require_once  WEE_DIR_PATH . '/widgets/my-wee-product-buscador.php';
